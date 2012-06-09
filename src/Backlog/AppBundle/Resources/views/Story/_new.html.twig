@@ -1,0 +1,7 @@
+<div class="page-header">
+    <h1>New story</h1>
+</div>
+<form action="{{ path('bl_backlogrow_saveNew', {backlog_uid: row.backlog.uid, type: type}) }}" method="POST">
+    {{ form_widget(form) }}
+    <p><input type="submit" class="btn" value="Save" /></p>
+</form>

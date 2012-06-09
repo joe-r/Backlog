@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity table="backlog_row_story" name="Backlog\AppBundle\Entity\Story">
+        <field name="title" type="string" length="256" />
+        <field name="descriptionRst" type="text" nullable="true" />
+        <field name="descriptionHtml" type="text" nullable="true" />
+        <field name="tags" type="array" />
+
+        <many-to-one field="assignee" target-entity="User">
+            <join-column name="assignee_username" referenced-column-name="username" />
+        </many-to-one>
+    </entity>
+
+</doctrine-mapping>

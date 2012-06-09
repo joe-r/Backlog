@@ -1,0 +1,11 @@
+{% extends "BacklogAppBundle::layout.html.twig" %}
+
+{% block title "Register" %}
+
+{% block content %}
+    <h1>Register</h1>
+    <form action="{{ path('bl_user_registerPost') }}" method="POST" {{ form_enctype(form) }} novalidate>
+        {{ form_widget(form) }}
+        <p><button class="btn btn-primary">Register</button></p>
+    </form>
+{% endblock %}

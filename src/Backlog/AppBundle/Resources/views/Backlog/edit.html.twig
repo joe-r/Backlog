@@ -1,0 +1,11 @@
+{% extends "BacklogAppBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Edit backlog "{{ backlog.title }}"</h1>
+    </div>
+    <form action="{{ path('bl_backlog_save', {uid: backlog.uid}) }}" method="POST">
+        {{ form_widget(form) }}
+        <p><input type="submit" class="btn" value="Save" /></p>
+    </form>
+{% endblock %}

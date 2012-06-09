@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity
+        table="backlog_row"
+        name="Backlog\AppBundle\Entity\BacklogRow"
+        repository-class="Backlog\AppBundle\Entity\BacklogRowRepository"
+        inheritance-type="JOINED"
+    >
+        <id name="uid" type="string" length="36" />
+
+        <discriminator-column name="type" type="string" length="12" />
+        <discriminator-map>
+            <discriminator-mapping value="story" class="Backlog\AppBundle\Entity\Story" />
+            <discriminator-mapping value="milestone" class="Backlog\AppBundle\Entity\Milestone" />
+        </discriminator-map>
+
+        <field name="createdAt" type="datetime" />
+        <field name="complexity" type="integer" />
+        <field name="position" type="integer" />
+        <field name="id" type="integer" />
+
+        <many-to-one field="backlog" target-entity="Backlog" inversed-by="rows">
+-            <join-column name="backlog_uid" referenced-column-name="uid" nullable="false" />
+        </many-to-one>
+    </entity>
+
+</doctrine-mapping>

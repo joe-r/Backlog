@@ -1,0 +1,11 @@
+{% extends "BacklogAppBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Create a new backlog</h1>
+    </div>
+    <form action="{{ path('bl_backlog_new') }}" method="POST">
+        {{ form_widget(form) }}
+        <p><input type="submit" class="btn" value="Save" /></p>
+    </form>
+{% endblock %}

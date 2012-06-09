@@ -1,0 +1,12 @@
+{% extends "BacklogAppBundle::base.html.twig" %}
+
+{% block body_class 'with-topbar' %}
+
+{% block body %}
+    {% include "BacklogAppBundle::_menu.html.twig" %}
+    <div class="container">
+        {% block content '' %}
+    </div>
+{% endblock %}
+
+{% block body_javascript %}{% block content_javascript '' %}{% endblock %}

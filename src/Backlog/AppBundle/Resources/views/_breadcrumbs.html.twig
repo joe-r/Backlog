@@ -1,0 +1,20 @@
+{% for part in parts %}
+    {% if loop.first %}
+        <div class="btn-toolbar">
+            <ul class="breadcrumb">
+    {% endif %}
+    <li>
+        {% if part.link %}
+            <a href="{{ part.link }}"{% if part.panel is defined and part.panel == false %} class="no-panel"{% endif %}>{{ part.label }}</a>
+        {% else %}
+            {{ part.label }}
+        {% endif %}
+        {% if not loop.last %}
+            <span class="divider">/</span>
+        {% endif %}
+    </li>
+    {% if loop.last %}
+            </ul>
+        </div>
+    {% endif %}
+{% endfor %}

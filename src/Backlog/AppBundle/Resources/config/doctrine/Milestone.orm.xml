@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity table="backlog_row_milestone" name="Backlog\AppBundle\Entity\Milestone">
+        <field name="title" type="string" length="256" />
+        <field name="dueAt" type="datetime" nullable="true" />
+    </entity>
+
+</doctrine-mapping>

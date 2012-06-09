@@ -1,0 +1,8 @@
+<div class="page-header">
+    <h3>#{{ row.id }}: {{ row.title }}</h3>
+</div>
+
+<dl>
+    <dt>Due date</dt>
+    <dd>{{ row.dueAt|date('Y-m-d') }}</dd>
+</dl>

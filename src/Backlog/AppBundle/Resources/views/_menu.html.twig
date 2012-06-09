@@ -1,0 +1,20 @@
+<div id="topbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <ul class="nav">
+                <li>
+                    <a href="{{ path('bl_backlog_list') }}">Backlogs</a>
+                </li>
+            </ul>
+            <ul class="nav pull-right">
+                {% if app.user %}
+                    <li><p class="navbar-text">Connected as <strong>{{ app.user.username }}</strong></p></li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="{{ path('bl_session_logout')}}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ path('bl_session_login')}}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

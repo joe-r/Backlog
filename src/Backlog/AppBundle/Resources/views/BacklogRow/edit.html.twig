@@ -1,0 +1,13 @@
+{% extends "BacklogAppBundle:Backlog:show.html.twig" %}
+
+{% block content %}
+    {% include "BacklogAppBundle::_breadcrumbs.html.twig" with {
+        'parts': [
+            {link: path('bl_backlog_list'), label: 'Home', panel: false},
+            {link: path('bl_backlog_show', {uid: row.backlog.uid}), label: row.backlog.title},
+            {link: path('bl_backlogrow_show', {backlog_uid: row.backlog.uid, id: row.id}), label: 'Row #' ~ row.id},
+            {link: false, label: 'Edit'}
+        ]
+    } %}
+    {{ bl_row_edit(row, form) }}
+{% endblock %}

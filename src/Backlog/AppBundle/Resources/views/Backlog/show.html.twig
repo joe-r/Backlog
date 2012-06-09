@@ -1,0 +1,40 @@
+{% extends app.request.xmlHttpRequest ? "BacklogAppBundle::_panel.html.twig" : "BacklogAppBundle::base.html.twig" %}
+
+{% block title backlog.title %}
+
+{% block body %}
+    <div id="bl-app">
+        <div id="bl-panel-left">
+            {% include "BacklogAppBundle:Backlog:_toolbar.html.twig" with {backlog: backlog} only %}
+            <div id="bl-backlog" data-uid="{{ backlog.uid }}">
+                {% include "BacklogAppBundle:BacklogRow:_list.html.twig" with {
+                    rows: backlog.rows,
+                    active: row is defined ? row : null
+                } only %}
+            </div>
+        </div>
+        <div id="bl-panel-left-resizer"></div>
+        <div id="bl-panel-center">
+            <div id="bl-viewer">
+                <div id="bl-viewer-loader">
+                    {% include "BacklogAppBundle:Backlog:_loader.html.twig" %}
+                </div>
+                <div id="bl-viewer-content">
+                    {% block content %}
+                        {% include "BacklogAppBundle::_breadcrumbs.html.twig" with {
+                            'parts': [
+                                {link: path('bl_backlog_list'), label: 'Home'},
+                                {link: false, label: backlog.title},
+                            ]
+                        } %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body_javascript %}
+    <script src="{{ asset('backlogapp/js/app.js') }}"></script>
+    {% block content_javascript '' %}
+{% endblock %}

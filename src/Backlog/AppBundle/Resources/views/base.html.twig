@@ -1,0 +1,11 @@
+<html>
+<head>
+    <title>{% block title '' %}</title>
+    {% include "BacklogAppBundle::_stylesheets.html.twig" %}
+</head>
+<body class="{% block body_class '' %}">
+    {% block body '' %}
+    {% include "BacklogAppBundle::_javascripts.html.twig" %}
+    {% block body_javascript '' %}
+</body>
+</html>

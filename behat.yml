@@ -1,0 +1,10 @@
+default:
+    context:
+        class: 'Backlog\AppBundle\Feature\FeatureContext'
+    extensions:
+        Behat\Symfony2Extension\Extension:
+        Behat\MinkExtension\Extension:
+            base_url:        http://todo.dev
+            default_session: sahi
+            sahi:            true
+            browser_name:    phantomjs

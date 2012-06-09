@@ -1,0 +1,21 @@
+<div class="page-header">
+    <h3>#{{ row.id }}: {{ row.title }}</h3>
+</div>
+
+<dl>
+    <dt>Complexity</dt>
+    <dd>{{ row.complexity }}</dd>
+    <dt>Assignee</dt>
+    <dd>
+        {% if row.assigned %}
+            {{ row.assignee.fullname }}
+            {% if row.isAssignee(app.user) %}
+                <span class="label">you</span>
+            {% endif %}
+        {% else %}
+            <em>No assignee</em>
+        {% endif %}
+    </dd>
+    <dt>Description</dt>
+    <dd>Bla bla bla bla bla bla bla bla bla bla bla</dd>
+</dl>
