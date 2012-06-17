@@ -184,4 +184,15 @@ abstract class BacklogRow
     {
         $this->isDone = $isDone;
     }
+
+    public function toJSON()
+    {
+        return array(
+            'id' => $this->id,
+            'position' => $this->position,
+            'is_done' => $this->isDone,
+            'complexity' => $this->complexity,
+            'created_at' => $this->createdAt->format('Y-m-d H:i:s')
+        );
+    }
 }

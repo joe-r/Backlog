@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="bl_app.request.format_listener" class="Backlog\AppBundle\EventListener\FormatListener" public="false">
+        <service id="bl_app.request.format_listener" class="Backlog\AppBundle\EventListener\FormatListener">
             <argument type="service" id="service_container" />
             <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
         </service>

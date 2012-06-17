@@ -26,6 +26,10 @@ class FormatListener
                 $format = 'html';
                 break;
             }
+            if ('application/json' == $type) {
+                $format = 'json';
+                break;
+            }
         }
 
         $request->attributes->set('_format', $format !== null ? $format : self::DEFAULT_FORMAT);

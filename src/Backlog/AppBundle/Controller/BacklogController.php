@@ -100,9 +100,20 @@ class BacklogController extends Controller
             throw $this->createNotFoundException();
         }
 
-        return $this->render('BacklogAppBundle:Backlog:show.html.twig', array(
-            'backlog' => $backlog
-        ));
+        $format = $this->getRequest()->attributes->get('_format');
+        switch ($format) {
+            case 'html':
+                return $this->render('BacklogAppBundle:Backlog:show.html.twig', array(
+                'backlog' => $backlog
+                ));
+            case 'json':
+                $response = $this->renderText(json_encode($backlog->toJSON()));
+                $response->headers->set('Content-Type', 'application/json');
+
+                return $response;
+            default:
+                throw $this->createNotFoundException(sprintf('Unknown format: %s', $format));
+        }
     }
 
     protected function createBacklog()
