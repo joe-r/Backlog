@@ -17,5 +17,6 @@ class BacklogAppExtension extends Extension
         $loader->load('model.xml');
         $loader->load('request.xml');
         $loader->load('test.xml');
+        $loader->load('view.xml');
     }
 }

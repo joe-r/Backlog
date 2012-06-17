@@ -95,25 +95,29 @@ class BacklogController extends Controller
     public function showAction($uid)
     {
         $backlog = $this->getRepository('BacklogAppBundle:Backlog')->find($uid);
+        $appMode = $this->getRequest()->query->get('mode') == 'app';
 
         if (!$backlog) {
             throw $this->createNotFoundException();
         }
 
         $format = $this->getRequest()->attributes->get('_format');
-        switch ($format) {
-            case 'html':
-                return $this->render('BacklogAppBundle:Backlog:show.html.twig', array(
-                'backlog' => $backlog
-                ));
-            case 'json':
-                $response = $this->renderText(json_encode($backlog->toJSON()));
-                $response->headers->set('Content-Type', 'application/json');
+        if ($format == 'html' && $appMode) {
+            return $this->render('BacklogAppBundle:Backlog:show_app.html.twig', array(
+            'backlog' => $backlog
+            ));
+        } elseif ($format == 'html') {
+            return $this->render('BacklogAppBundle:Backlog:show.html.twig', array(
+            'backlog' => $backlog
+            ));
+        } elseif ($format == 'json') {
+            $response = $this->renderText(json_encode($backlog->toJSON()));
+            $response->headers->set('Content-Type', 'application/json');
 
-                return $response;
-            default:
-                throw $this->createNotFoundException(sprintf('Unknown format: %s', $format));
+            return $response;
         }
+
+        throw $this->createNotFoundException(sprintf('Unknown format: %s', $format));
     }
 
     protected function createBacklog()

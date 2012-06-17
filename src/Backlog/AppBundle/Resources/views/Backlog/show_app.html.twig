@@ -1,0 +1,27 @@
+{% extends app.request.xmlHttpRequest ? "BacklogAppBundle::_panel.html.twig" : "BacklogAppBundle::base.html.twig" %}
+
+{% block title backlog.title %}
+
+{% block body %}
+    <div id="bl-app">
+        <div id="bl-panel-left">
+            {% include "BacklogAppBundle:Backlog:_toolbar.html.twig" with {backlog: backlog} only %}
+            <div id="bl-backlog" data-uid="{{ backlog.uid }}">
+            </div>
+        </div>
+        <div id="bl-panel-left-resizer"></div>
+        <div id="bl-panel-center">
+        </div>
+    </div>
+{% endblock %}
+
+{% block body_javascript %}
+    <script type="text/javascript" src="{{ asset("bundles/backlogapp/js/backlog-model.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/backlogapp/js/backlog-view.js") }}"></script>
+    <script type="text/javascript">
+        $(function(){
+            var bl = new Backlog.Model.Backlog({uid: "{{ backlog.uid }}"});
+            var app = new Backlog.View.AppView({model: bl});
+        });
+    </script>
+{% endblock %}

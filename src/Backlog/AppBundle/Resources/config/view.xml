@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="bl_app.view.api_templating" class="Backlog\AppBundle\View\JavascriptTemplating">
+            <argument type="service" id="templating.finder" />
+            <argument type="service" id="templating.locator" />
+        </service>
+
+        <service id="bl_app.model.story_provider" class="Backlog\AppBundle\Entity\RowProvider\StoryProvider" public="false">
+            <argument type="service" id="form.factory" />
+        </service>
+        <service id="bl_app.model.milestone_provider" class="Backlog\AppBundle\Entity\RowProvider\MilestoneProvider" public="false">
+            <argument type="service" id="form.factory" />
+        </service>
+
+        <service id="bl_app.model.backlog_row_listener" class="Backlog\AppBundle\Entity\Listener\BacklogRowListener" public="false">
+            <tag name="doctrine.event_listener" event="prePersist" />
+        </service>
+    </services>
+</container>

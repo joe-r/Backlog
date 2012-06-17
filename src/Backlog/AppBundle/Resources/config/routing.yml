@@ -100,3 +100,14 @@ bl_session_loginCheck:
 bl_session_logout:
     pattern: /logout
     defaults: { _controller: "BacklogAppBundle:Session:logout" }
+
+# Template
+
+bl_template_list:
+    pattern: /templates
+    defaults: { _controller: "BacklogAppBundle:Template:list" }
+
+bl_template_show:
+    pattern: /templates/{template}
+    defaults: { _controller: "BacklogAppBundle:Template:show" }
+

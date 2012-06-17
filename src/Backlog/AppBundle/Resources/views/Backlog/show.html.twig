@@ -16,9 +16,6 @@
         <div id="bl-panel-left-resizer"></div>
         <div id="bl-panel-center">
             <div id="bl-viewer">
-                <div id="bl-viewer-loader">
-                    {% include "BacklogAppBundle:Backlog:_loader.html.twig" %}
-                </div>
                 <div id="bl-viewer-content">
                     {% block content %}
                         {% include "BacklogAppBundle::_breadcrumbs.html.twig" with {
@@ -32,8 +29,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block body_javascript %}
-    <script type="text/javascript" src="{{ asset("bundles/backlogapp/js/backlog.js") }}"></script>
 {% endblock %}
