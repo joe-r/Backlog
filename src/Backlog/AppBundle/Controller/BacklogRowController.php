@@ -4,9 +4,6 @@ namespace Backlog\AppBundle\Controller;
 
 use Backlog\AppBundle\Controller\Controller;
 
-use Backlog\AppBundle\Entity\Story;
-use Backlog\AppBundle\Entity\Milestone;
-
 class BacklogRowController extends Controller
 {
     public function moveAction($backlog_uid, $id)
@@ -111,6 +108,7 @@ class BacklogRowController extends Controller
                 'id'          => $id
             )));
         }
+
         return $this->render('BacklogAppBundle:BacklogRow:edit.html.twig', array(
             'form' => $form->createView(),
             'row' => $row
@@ -140,6 +138,7 @@ class BacklogRowController extends Controller
                 'id'          => $row->getId()
             )));
         }
+
         return $this->render('BacklogAppBundle:BacklogRow:new.html.twig', array(
             'form' => $form->createView(),
             'row' => $row,

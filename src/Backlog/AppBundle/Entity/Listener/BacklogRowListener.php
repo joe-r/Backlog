@@ -2,7 +2,6 @@
 
 namespace Backlog\AppBundle\Entity\Listener;
 
-use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\NoResultException;
 

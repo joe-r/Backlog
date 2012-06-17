@@ -49,6 +49,7 @@ class BacklogExtension extends \Twig_Extension
     public function renderRowRow(BacklogRow $row, BacklogRow $active = null)
     {
         $tpl = $this->container->get('bl_app.row_manager')->getProvider($row)->getRowTemplate();
+
         return $this->environment->render($tpl, array(
             'row'   => $row,
             'active' => $active
@@ -58,6 +59,7 @@ class BacklogExtension extends \Twig_Extension
     public function renderRowShow(BacklogRow $row)
     {
         $tpl = $this->container->get('bl_app.row_manager')->getProvider($row)->getShowTemplate();
+
         return $this->environment->render($tpl, array(
             'row'   => $row
         ));
@@ -66,6 +68,7 @@ class BacklogExtension extends \Twig_Extension
     public function renderRowEdit(BacklogRow $row, FormView $form)
     {
         $tpl = $this->container->get('bl_app.row_manager')->getProvider($row)->getEditTemplate();
+
         return $this->environment->render($tpl, array(
             'row'   => $row,
             'form' => $form
@@ -75,6 +78,7 @@ class BacklogExtension extends \Twig_Extension
     public function renderRowNew(BacklogRow $row, FormView $form, $type)
     {
         $tpl = $this->container->get('bl_app.row_manager')->getProvider($row)->getNewTemplate();
+
         return $this->environment->render($tpl, array(
             'row'   => $row,
             'form'  => $form,
