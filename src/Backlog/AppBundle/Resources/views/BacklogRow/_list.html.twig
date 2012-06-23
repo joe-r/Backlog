@@ -1,3 +1,5 @@
-{% for row in rows %}
-    {{ bl_row_row(row, active is defined ? active : null) }}
-{% endfor %}
+<div class="backlog-row-list">
+  {% for row in rows %}
+      {{ bl_row_row(row, active is defined ? active : null) }}
+  {% endfor %}
+</div>

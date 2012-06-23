@@ -1,6 +1,6 @@
-{% extends "BacklogAppBundle:Backlog:show.html.twig" %}
+{% extends "BacklogAppBundle:Backlog:layout.html.twig" %}
 
-{% block content %}
+{% block panel %}
     {% include "BacklogAppBundle::_breadcrumbs.html.twig" with {
         'parts': [
             {link: path('bl_backlog_list'), label: 'Home', panel: false},

@@ -1,4 +1,4 @@
-<div class="{% if active is defined and active == row %}active {% endif %}{% block class 'bl-backlog-row' %}" data-id="{{ row.id }}" data-complexity="{{ row.complexity }}" data-position="{{ row.position }}">
+<div class="{% if active is defined and active == row %}active {% endif %}{% block class '' %}">
     <a href="{{ path('bl_backlogrow_show', {'backlog_uid': row.backlog.uid, 'id': row.id }) }}">
         <i class="{% block icon 'icon-minus' %}"></i>
         {% block content '' %}

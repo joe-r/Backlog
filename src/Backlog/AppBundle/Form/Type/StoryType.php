@@ -12,6 +12,9 @@ class StoryType extends AbstractType
         $builder
             ->add('title', 'text')
             ->add('complexity', 'number')
+            ->add('description_rst', 'textarea', array(
+                'required' => false
+            ))
         ;
     }
 
