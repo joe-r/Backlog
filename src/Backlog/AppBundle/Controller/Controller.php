@@ -8,14 +8,17 @@ use Doctrine\ORM\Entity\Repository;
 
 abstract class Controller extends BaseController
 {
-    /**
-     * Returns a Doctrine repository
-     *
-     * @return Repository
-     */
     protected function getRepository($name)
     {
         return $this->getDoctrine()->getRepository($name);
+    }
+
+    protected function throwNotFoundUnless($condition, $message = 'Not found')
+    {
+        if (!$condition)
+        {
+            throw $this->createNotFoundException($message);
+        }
     }
 
     protected function persistAndFlush($entity)

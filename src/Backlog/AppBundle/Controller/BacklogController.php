@@ -11,6 +11,30 @@ use Backlog\AppBundle\Entity\Backlog;
  */
 class BacklogController extends Controller
 {
+
+    /**
+     * Show a backlog
+     */
+    public function showAction($uid)
+    {
+        $this->throwNotFoundUnless($backlog = $this->getRepository('BacklogAppBundle:Backlog')->find($uid));
+
+        $format = $this->getRequest()->attributes->get('_format');
+
+        if ($format == 'html') {
+            return $this->render('BacklogAppBundle:Backlog:show.html.twig', array(
+            'backlog' => $backlog
+            ));
+        } elseif ($format == 'json') {
+            $response = $this->renderText(json_encode($backlog->toJSON()));
+            $response->headers->set('Content-Type', 'application/json');
+
+            return $response;
+        }
+
+        throw $this->createNotFoundException(sprintf('Unknown format: %s', $format));
+    }
+
     /**
      * Displays form for backlog creation
      */
@@ -45,11 +69,7 @@ class BacklogController extends Controller
 
     public function editAction($uid)
     {
-        $backlog = $this->getRepository('BacklogAppBundle:Backlog')->find($uid);
-        if (!$backlog) {
-            throw $this->createNotFoundException(sprintf("Backlog %s not found", $uid));
-        }
-
+        $backlog = $this->getBacklog($uid);
         $form = $this->createForm('bl_backlog', $backlog);
 
         return $this->render('BacklogAppBundle:Backlog:edit.html.twig', array(
@@ -60,17 +80,16 @@ class BacklogController extends Controller
 
     public function saveAction($uid)
     {
-        $backlog = $this->getRepository('BacklogAppBundle:Backlog')->find($uid);
-        if (!$backlog) {
-            throw $this->createNotFoundException(sprintf("Backlog %s not found", $uid));
-        }
-
+        $backlog = $this->getBacklog($uid);
         $form = $this->createForm('bl_backlog', $backlog);
+
         $form->bindRequest($this->getRequest());
         if ($form->isValid()) {
             $this->persistAndFlush($backlog);
 
-            return $this->redirect($this->generateUrl('bl_backlog_show', array('uid' => $uid)));
+            return $this->redirect(
+                $this->generateUrl('bl_backlog_show', array('uid' => $uid))
+            );
         }
 
         return $this->render('BacklogAppBundle:Backlog:edit.html.twig', array(
@@ -79,9 +98,6 @@ class BacklogController extends Controller
         ));
     }
 
-    /**
-     * List backlogs
-     */
     public function listAction()
     {
         return $this->render('BacklogAppBundle:Backlog:list.html.twig', array(
@@ -89,35 +105,14 @@ class BacklogController extends Controller
         ));
     }
 
-    /**
-     * Show a backlog
-     */
-    public function showAction($uid)
+    protected function getBacklog($uid)
     {
-        $backlog = $this->getRepository('BacklogAppBundle:Backlog')->find($uid);
-        $appMode = $this->getRequest()->query->get('mode') == 'app';
+        $this->throwNotFoundUnless(
+            $bl = $this->getRepository('BacklogAppBundle:Backlog')->find($uid),
+            'Unable to find backlog #'.$uid
+        );
 
-        if (!$backlog) {
-            throw $this->createNotFoundException();
-        }
-
-        $format = $this->getRequest()->attributes->get('_format');
-        if ($format == 'html' && $appMode) {
-            return $this->render('BacklogAppBundle:Backlog:show_app.html.twig', array(
-            'backlog' => $backlog
-            ));
-        } elseif ($format == 'html') {
-            return $this->render('BacklogAppBundle:Backlog:show.html.twig', array(
-            'backlog' => $backlog
-            ));
-        } elseif ($format == 'json') {
-            $response = $this->renderText(json_encode($backlog->toJSON()));
-            $response->headers->set('Content-Type', 'application/json');
-
-            return $response;
-        }
-
-        throw $this->createNotFoundException(sprintf('Unknown format: %s', $format));
+        return $bl;
     }
 
     protected function createBacklog()

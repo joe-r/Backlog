@@ -67,14 +67,7 @@ class BacklogRowController extends Controller
 
     public function editAction($backlog_uid, $id)
     {
-        $row = $this->getRepository('BacklogAppBundle:BacklogRow')->findOneBy(array(
-            'backlog'     => $backlog_uid,
-            'id'          => $id
-        ));
-
-        if (!$row) {
-            throw $this->createNotFoundException(sprintf('Backlog row not found (%s)', $id));
-        }
+        $row = $this->getRow($backlog_uid, $id);
 
         $provider = $this->get('bl_app.row_manager')->getProvider($row);
         $form = $provider->getForm($row);
@@ -88,17 +81,10 @@ class BacklogRowController extends Controller
 
     public function saveAction($backlog_uid, $id)
     {
-        $row = $this->getRepository('BacklogAppBundle:BacklogRow')->findOneBy(array(
-            'backlog'     => $backlog_uid,
-            'id'          => $id
-        ));
-
-        if (!$row) {
-            throw $this->createNotFoundException(sprintf('Backlog row not found (%s)', $id));
-        }
-
+        $row = $this->getRow($backlog_uid, $id);
         $provider = $this->get('bl_app.row_manager')->getProvider($row);
         $form = $provider->getForm($row);
+
         $form->bindRequest($this->getRequest());
         if ($form->isValid()) {
             $this->persistAndFlush($row);
@@ -145,5 +131,19 @@ class BacklogRowController extends Controller
             'backlog' => $row->getBacklog(),
             'type' => $type
         ));
+    }
+
+    protected function getRow($backlog_uid, $id)
+    {
+        $row = $this->getRepository('BacklogAppBundle:BacklogRow')->findOneBy(array(
+            'backlog' => $backlog_uid,
+            'id' => $id
+        ));
+
+        if (!$row) {
+            throw $this->createNotFoundException('Unable to find BacklogRow #'.$backlog_uid.'/'.$id);
+        }
+
+        return $row;
     }
 }
