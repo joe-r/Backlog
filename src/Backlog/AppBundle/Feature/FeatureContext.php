@@ -26,4 +26,17 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
             ->execute()
         ;
     }
+
+    /**
+     * @Given /^I\'m connected as user "([^"]*)"$/
+     */
+    public function iMConnectedAsUser($username, $password = null)
+    {
+        $this->visit("/login");
+
+        $this->fillField('_username', $username);
+        $this->fillField('_password', isset($password) ? $password : $username);
+        $this->pressButton('Login');
+        $this->assertPageContainsText('Connected as '.$username);
+    }
 }

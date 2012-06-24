@@ -1,6 +1,6 @@
 Feature: Registering to the website
     I can create an account
-    As a user
+    As a visitor
     To start using services
 
     Background:
