@@ -23,9 +23,7 @@ class UserController extends Controller
         $form->bindRequest($this->getRequest());
 
         if ($form->isValid()) {
-            $em = $this->get('doctrine')->getEntityManager();
-            $em->persist($user);
-            $em->flush();
+            $this->doRegister($user);
 
             return $this->redirect($this->generateUrl('bl_user_registerSuccess'));
         }
@@ -38,5 +36,10 @@ class UserController extends Controller
     public function registerSuccessAction()
     {
         return $this->render('BacklogAppBundle:User:registerSuccess.html.twig');
+    }
+
+    protected function doRegister(User $user)
+    {
+        $this->persistAndFlush($user);
     }
 }
