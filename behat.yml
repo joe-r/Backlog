@@ -4,7 +4,8 @@ default:
     extensions:
         Behat\Symfony2Extension\Extension:
         Behat\MinkExtension\Extension:
-            base_url:        http://todo.dev
-            default_session: sahi
-            sahi:            true
-            browser_name:    phantomjs
+            base_url:           http://todo.dev
+            javascript_session: sahi
+            goutte:             true
+            sahi:               true
+            browser_name:       phantomjs

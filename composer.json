@@ -21,6 +21,7 @@
 
         "behat/symfony2-extension": "dev-master",
         "behat/mink-extension": "dev-master",
+        "behat/mink-goutte-driver": "dev-master",
         "behat/mink-sahi-driver": "dev-master"
     },
     "scripts": {
