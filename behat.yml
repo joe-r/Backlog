@@ -2,10 +2,11 @@ default:
     context:
         class: 'Backlog\AppBundle\Feature\FeatureContext'
     extensions:
+        Backlog\JournalExtension\Extension:
         Behat\Symfony2Extension\Extension:
         Behat\MinkExtension\Extension:
             base_url:           http://todo.dev
-            javascript_session: sahi
+            default_session: selenium
             goutte:             true
-            sahi:               true
-            browser_name:       phantomjs
+            selenium:           true
+            browser_name:       firefox

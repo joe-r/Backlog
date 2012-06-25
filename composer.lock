@@ -1,6 +1,11 @@
 {
-    "hash": "59a179fe2600acbcb162eb2f05e5562f",
+    "hash": "53e905b2b9a45436c33e14ccee1ed79f",
     "packages": [
+        {
+            "package": "alexandresalome/php-selenium",
+            "version": "dev-master",
+            "source-reference": "b8087f70e70a955a56f24557079eff9a91f055db"
+        },
         {
             "package": "behat/behat",
             "version": "v2.4.0"
@@ -29,13 +34,9 @@
             "source-reference": "c628f8ca4518f09f71983c3b6b824f85900d596f"
         },
         {
-            "package": "behat/mink-sahi-driver",
+            "package": "behat/mink-selenium-driver",
             "version": "dev-master",
-            "source-reference": "79ecebabcd031c0c9ae78335cda9a893fe40ff38"
-        },
-        {
-            "package": "behat/sahi-client",
-            "version": "v1.0.1"
+            "source-reference": "fbea20b62283846a27e007df2383d93613667740"
         },
         {
             "package": "behat/symfony2-extension",
@@ -81,14 +82,14 @@
         {
             "package": "fabpot/goutte",
             "version": "dev-master",
-            "source-reference": "c2ea8d9a6682d14482e57ede2371001b8a5238d2",
-            "alias-pretty-version": "1.0.x-dev",
-            "alias-version": "1.0.9999999.9999999-dev"
+            "source-reference": "c2ea8d9a6682d14482e57ede2371001b8a5238d2"
         },
         {
             "package": "fabpot/goutte",
             "version": "dev-master",
-            "source-reference": "c2ea8d9a6682d14482e57ede2371001b8a5238d2"
+            "source-reference": "c2ea8d9a6682d14482e57ede2371001b8a5238d2",
+            "alias-pretty-version": "1.0.x-dev",
+            "alias-version": "1.0.9999999.9999999-dev"
         },
         {
             "package": "guzzle/guzzle",
@@ -105,11 +106,6 @@
             "source-reference": "d6f89a3170c5280ad554347dc113eb25fdf00ad7",
             "alias-pretty-version": "1.1.x-dev",
             "alias-version": "1.1.9999999.9999999-dev"
-        },
-        {
-            "package": "kriswallsmith/buzz",
-            "version": "dev-master",
-            "source-reference": "5c7d0523501f02c766166b08ac98613bde0254b5"
         },
         {
             "package": "monolog/monolog",
@@ -147,38 +143,38 @@
         {
             "package": "symfony/monolog-bundle",
             "version": "dev-master",
-            "source-reference": "0b5046d3d1ef93cd59ceabfa37de2665f5118c7f"
+            "source-reference": "660a1aeaf93e8ffdc34c27b3a82dc47195ad1d8d"
         },
         {
             "package": "symfony/monolog-bundle",
             "version": "dev-master",
-            "source-reference": "0b5046d3d1ef93cd59ceabfa37de2665f5118c7f",
+            "source-reference": "660a1aeaf93e8ffdc34c27b3a82dc47195ad1d8d",
             "alias-pretty-version": "2.1.x-dev",
             "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/swiftmailer-bundle",
-            "version": "dev-master",
-            "source-reference": "d05c9c514a631ee688c53c4cc5505da757bd50d3",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/swiftmailer-bundle",
-            "version": "dev-master",
-            "source-reference": "d05c9c514a631ee688c53c4cc5505da757bd50d3"
-        },
-        {
-            "package": "symfony/symfony",
             "version": "dev-master",
             "source-reference": "v2.1.0-BETA1",
             "alias-pretty-version": "2.1.x-dev",
             "alias-version": "2.1.9999999.9999999-dev"
         },
         {
-            "package": "symfony/symfony",
+            "package": "symfony/swiftmailer-bundle",
             "version": "dev-master",
             "source-reference": "v2.1.0-BETA1"
+        },
+        {
+            "package": "symfony/symfony",
+            "version": "dev-master",
+            "source-reference": "58436de19583c6e74392f6d369c61b8642e74c72"
+        },
+        {
+            "package": "symfony/symfony",
+            "version": "dev-master",
+            "source-reference": "58436de19583c6e74392f6d369c61b8642e74c72",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "twig/extensions",
@@ -214,6 +210,6 @@
         "behat/symfony2-extension": 20,
         "behat/mink-extension": 20,
         "behat/mink-goutte-driver": 20,
-        "behat/mink-sahi-driver": 20
+        "behat/mink-selenium-driver": 20
     }
 }
