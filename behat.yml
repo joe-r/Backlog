@@ -2,7 +2,7 @@ default:
     context:
         class: 'Backlog\AppBundle\Feature\FeatureContext'
     extensions:
-        Backlog\JournalExtension\Extension:
+        Behat\JournalExtension\Extension:
         Behat\Symfony2Extension\Extension:
         Behat\MinkExtension\Extension:
             base_url:           http://todo.dev

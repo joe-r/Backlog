@@ -22,7 +22,8 @@
         "behat/symfony2-extension": "dev-master",
         "behat/mink-extension": "dev-master",
         "behat/mink-goutte-driver": "dev-master",
-        "behat/mink-selenium-driver": "dev-master"
+        "behat/mink-selenium-driver": "dev-master",
+        "alom/journal-extension": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
