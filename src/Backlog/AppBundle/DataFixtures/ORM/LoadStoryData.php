@@ -43,10 +43,13 @@ class LoadStoryData extends BaseFixture
             $story->setAssignee($assignee);
         }
 
+        $converter = $this->getContainer()->get('bl_app.markdown_converter');
+
         $story->setTitle($title);
         $story->setBacklog($backlog);
         $story->setPosition($position);
         $story->setComplexity($complexity);
+        $story->setDescription('This is description of '.$title, $converter);
 
         return $story;
     }

@@ -2,6 +2,8 @@
 
 namespace Backlog\AppBundle\Entity;
 
+use Backlog\AppBundle\Markdown\ConverterInterface;
+
 /**
  * Representation of a story.
  *
@@ -30,7 +32,7 @@ class Story extends BacklogRow
      *
      * @var string
      */
-    protected $descriptionRst;
+    protected $descriptionMarkdown;
     protected $descriptionHtml;
 
     /**
@@ -91,23 +93,24 @@ class Story extends BacklogRow
     }
 
     /**
-     * Returns RST description of the story.
+     * Changes description of the story.
      *
-     * @return string A text in RST format
+     * @param string $descriptionMarkdown New markdown description to set
      */
-    public function getDescriptionRst()
+    public function setDescription($markdown, ConverterInterface $converter)
     {
-        return $this->descriptionRst;
+        $this->descriptionMarkdown = $markdown;
+        $this->descriptionHtml = $converter->convertToHtml($markdown);
     }
 
     /**
-     * Changes RST description of the story.
+     * Returns markdown description of the story.
      *
-     * @param string $descriptionRst New RST description to set
+     * @return string A text in markdown format
      */
-    public function setDescriptionRst($descriptionRst)
+    public function getDescriptionMarkdown()
     {
-        $this->descriptionRst = $descriptionRst;
+        return $this->descriptionMarkdown;
     }
 
     /**
@@ -118,16 +121,6 @@ class Story extends BacklogRow
     public function getDescriptionHtml()
     {
         return $this->descriptionHtml;
-    }
-
-    /**
-     * Changes HTML description of the story.
-     *
-     * @param string $descriptionHtml New HTML description to set
-     */
-    public function setDescriptionHtml($descriptionHtml)
-    {
-        $this->descriptionHtml = $descriptionHtml;
     }
 
     /**

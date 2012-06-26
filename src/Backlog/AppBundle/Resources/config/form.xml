@@ -15,6 +15,7 @@
         </service>
 
         <service id="bl_app.form.story_type" class="Backlog\AppBundle\Form\Type\StoryType">
+            <argument type="service" id="bl_app.markdown_converter" />
             <tag name="form.type" alias="bl_story" />
         </service>
 
