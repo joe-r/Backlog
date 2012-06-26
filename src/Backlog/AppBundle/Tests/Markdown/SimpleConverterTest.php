@@ -19,9 +19,7 @@ class SimpleConverterTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('<strong>',    '&lt;strong&gt;'),
-            array('foo **bar**', 'foo <strong>bar</strong>'),
-            array('foo ++bar++', 'foo <em>bar</em>'),
-            array('++foo++ ++bar++', '<em>foo</em> <em>bar</em>'),
+            array("Foo\nbar", 'Foo<br />bar'),
         );
     }
 }
