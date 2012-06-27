@@ -9,6 +9,7 @@ crash things, on some of real conditions.
 
 Other playgrounds exist:
 
+* https://github.com/juliendidier/JulBox
 * https://github.com/hhamon/Hangman
 * Fork me, add yours
 
