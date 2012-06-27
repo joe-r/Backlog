@@ -5,7 +5,7 @@
 
     <entity table="backlog_row_story" name="Backlog\AppBundle\Entity\Story">
         <field name="title" type="string" length="256" />
-        <field name="descriptionMarkdown" type="text" nullable="true" />
+        <field name="description" type="text" nullable="true" />
         <field name="descriptionHtml" type="text" nullable="true" />
         <field name="tags" type="array" />
 

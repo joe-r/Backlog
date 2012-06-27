@@ -28,11 +28,11 @@ class Story extends BacklogRow
     protected $assignee;
 
     /**
-     * Description of the story
+     * Description of the story (markdown)
      *
      * @var string
      */
-    protected $descriptionMarkdown;
+    protected $description;
     protected $descriptionHtml;
 
     /**
@@ -95,11 +95,15 @@ class Story extends BacklogRow
     /**
      * Changes description of the story.
      *
-     * @param string $descriptionMarkdown New markdown description to set
+     * @param string $description New markdown description to set
      */
-    public function setDescription($markdown, ConverterInterface $converter)
+    public function setDescription($markdown, ConverterInterface $converter = null)
     {
-        $this->descriptionMarkdown = $markdown;
+        if (null === $converter && $markdown !== $this->description) {
+            throw new \InvalidArgumentException('Cannot change description without a markdown converter');
+        }
+
+        $this->description     = $markdown;
         $this->descriptionHtml = $converter->convertToHtml($markdown);
     }
 
@@ -108,9 +112,9 @@ class Story extends BacklogRow
      *
      * @return string A text in markdown format
      */
-    public function getDescriptionMarkdown()
+    public function getDescription()
     {
-        return $this->descriptionMarkdown;
+        return $this->description;
     }
 
     /**
@@ -159,7 +163,9 @@ class Story extends BacklogRow
         return array_merge(parent::toJSON(), array(
             'type'  => 'story',
             'tags'  => $this->tags,
-            'title' => $this->title
+            'title' => $this->title,
+            'description' => $this->description,
+            'description_html' => $this->descriptionHtml,
         ));
     }
 }
