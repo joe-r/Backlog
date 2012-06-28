@@ -1,0 +1,13 @@
+{% extends "BacklogAppBundle::layout.html.twig" %}
+
+{% block content %}
+  {% block breadcrumb '' %}
+  <div class="row">
+    <div class="span4">
+      {% block left '&nbsp;' %}
+    </div>
+    <div class="span8">
+      {% block right '' %}
+    </div>
+  </div>
+{% endblock %}

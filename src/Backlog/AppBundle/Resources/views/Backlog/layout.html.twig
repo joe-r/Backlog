@@ -1,27 +1,11 @@
-{% extends "BacklogAppBundle::layout.html.twig" %}
+{% extends "BacklogAppBundle::layout-2columns-left.html.twig" %}
 
-{% block content %}
-  <div class="container">
-    <div class="row">
-        <div class="span4">
-            {% include "BacklogAppBundle:Backlog:_toolbar.html.twig" with {
-              backlog: backlog
-            } only %}
-            {% include "BacklogAppBundle:BacklogRow:_list.html.twig" with {
-                rows: backlog.rows,
-                active: row is defined ? row : null
-            } only %}
-        </div>
-        <div class="span8">
-            {% block panel %}
-                {% include "BacklogAppBundle::_breadcrumbs.html.twig" with {
-                    'parts': [
-                        {link: path('bl_backlog_list'), label: 'Backlogs'},
-                        {link: false, label: backlog.title},
-                    ]
-                } %}
-            {% endblock %}
-        </div>
-    </div>
-  </div>
+{% block left %}
+  {% include "BacklogAppBundle:Backlog:_toolbar.html.twig" with {
+    backlog: backlog
+  } only %}
+  {% include "BacklogAppBundle:BacklogRow:_list.html.twig" with {
+      rows: backlog.rows,
+      active: row is defined ? row : null
+  } only %}
 {% endblock %}

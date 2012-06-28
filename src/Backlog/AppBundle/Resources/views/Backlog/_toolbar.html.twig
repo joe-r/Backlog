@@ -13,7 +13,7 @@
             {% endfor %}
         </ul>
     </div>
-        <div class="btn-group">
+    <div class="btn-group">
         <button class="btn dropdown-toggle" data-toggle="dropdown">
             <i class="icon-signal"></i>
             Options
@@ -22,6 +22,8 @@
         <ul class="dropdown-menu">
             <li><a href="#">Burn chart</a></li>
             <li><a href="#">Statistics</a></li>
+            <li class="divider"></li>
+            <li><a href="{{ path('bl_backlog_download', {uid: backlog.uid, format: 'json'}) }}">Download JSON</a></li>
             <li class="divider"></li>
             <li><a href="{{ path('bl_backlog_edit', {uid: backlog.uid }) }}">Options</a></li>
         </ul>

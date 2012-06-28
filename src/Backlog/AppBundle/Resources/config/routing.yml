@@ -11,6 +11,11 @@ bl_backlog_show:
     defaults: { _controller: "BacklogAppBundle:Backlog:show" }
     requirements: { _method: "GET" }
 
+bl_backlog_download:
+    pattern: /b/{uid}/download
+    defaults: { _controller: "BacklogAppBundle:Backlog:download" }
+    requirements: { _method: "GET" }
+
 bl_backlog_new:
     pattern: /backlog/new
     defaults: { _controller: "BacklogAppBundle:Backlog:new" }

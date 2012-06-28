@@ -11,7 +11,6 @@ use Backlog\AppBundle\Entity\Backlog;
  */
 class BacklogController extends Controller
 {
-
     /**
      * Show a backlog
      */
@@ -33,6 +32,28 @@ class BacklogController extends Controller
         }
 
         throw $this->createNotFoundException(sprintf('Unknown format: %s', $format));
+    }
+
+    public function downloadAction($uid)
+    {
+        $format = $this->getRequest()->query->get('format');
+
+        $response = null;
+        switch ($format) {
+            case 'json':
+                $response = $this->forward('BacklogAppBundle:Backlog:show.html.twig', array(
+                    '_format' => $format
+                ));
+
+                break;
+        }
+
+        $this->throwNotFoundUnless($response, sprintf('Format "%s" not supported', $format));
+
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Content-Disposition', 'Attachment');
+
+        return $response;
     }
 
     /**
