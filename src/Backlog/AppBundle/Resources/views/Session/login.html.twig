@@ -1,19 +1,21 @@
-{% extends "BacklogAppBundle::layout.html.twig" %}
+{% extends "BacklogAppBundle::layout-mini.html.twig" %}
 
 {% block title "Welcome to Backlog" %}
 
-{% block content %}
-    <div id="login-form-wrapper">
-        <div class="page-header">
-            <h1>Login</h1>
-        </div>
-        <form class="well form-stacked" action="{{ path('bl_session_loginCheck') }}" method="POST" novalidate {{ form_enctype(form) }}>
-
-            {{ form_widget(form) }}
-
-            <p><button class="btn btn-primary">Login</button> <a href="#">Forgot your password?</a></p>
-
-        </form>
-        <p><a href="{{ path('bl_user_register') }}">Register</a></p>
+{% block mini %}
+    <div class="page-header">
+        <h1>Login</h1>
     </div>
+    <form class="form-stacked" action="{{ path('bl_session_loginCheck') }}" method="POST" novalidate {{ form_enctype(form) }}>
+
+        {{ form_widget(form, {'field_class': 'span6'}) }}
+
+        <p>
+          <button class="btn btn-primary">Login</button>
+          <a href="{{ path('bl_user_register') }}">Register</a>
+          -
+          <a href="#">Forgot your password?</a>
+        </p>
+
+    </form>
 {% endblock %}

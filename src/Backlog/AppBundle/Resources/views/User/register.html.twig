@@ -1,9 +1,11 @@
-{% extends "BacklogAppBundle::layout.html.twig" %}
+{% extends "BacklogAppBundle::layout-mini.html.twig" %}
 
 {% block title "Register" %}
 
-{% block content %}
-    <h1>Register</h1>
+{% block mini %}
+    <div class="page-header">
+      <h1>Register</h1>
+    </div>
     <form action="{{ path('bl_user_registerPost') }}" method="POST" {{ form_enctype(form) }} novalidate>
         {{ form_widget(form) }}
         <p><button class="btn btn-primary">Register</button></p>

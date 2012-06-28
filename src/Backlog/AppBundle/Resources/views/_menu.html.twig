@@ -1,13 +1,9 @@
-<p id="menu">
-  {% if app.user %}
-    Connected as <strong>{{ app.user.username }}</strong>
-    -
-    <a href="{{ path('bl_session_logout')}}">
-      Logout
-    </a>
-  {% else %}
-    <a href="{{ path('bl_session_login')}}">
-      Login
-    </a>
-  {% endif %}
-</p>
+{% if app.user %}
+    <p id="menu">
+        Connected as <strong>{{ app.user.username }}</strong>
+        -
+        <a href="{{ path('bl_session_logout')}}">
+          Logout
+        </a>
+    </p>
+{% endif %}
