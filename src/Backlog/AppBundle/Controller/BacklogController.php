@@ -41,9 +41,15 @@ class BacklogController extends Controller
         $response = null;
         switch ($format) {
             case 'json':
-                $response = $this->forward('BacklogAppBundle:Backlog:show.html.twig', array(
-                    '_format' => $format
+                $response = $this->forward('BacklogAppBundle:Backlog:show', array(
+                    'uid' => $uid,
+                ), array(
+                    '_format' => $format,
                 ));
+
+                if ($response->getStatusCode() !== 200) {
+                    throw new \RuntimeException('Unable to fetch JSON data');
+                }
 
                 break;
         }

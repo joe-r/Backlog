@@ -20,15 +20,20 @@ class FormatListener
     {
         $request = $event->getRequest();
 
-        $format = null;
-        foreach ($request->getAcceptableContentTypes() as $type) {
-            if ('text/html' == $type) {
-                $format = 'html';
-                break;
+        if ($format = $request->query->get('_format')) {
+            if (!in_array($format, array('html', 'json'))) {
+                throw new \RuntimeException('Unexpected _format value');
             }
-            if ('application/json' == $type) {
-                $format = 'json';
-                break;
+        } else {
+            foreach ($request->getAcceptableContentTypes() as $type) {
+                if ('text/html' == $type) {
+                    $format = 'html';
+                    break;
+                }
+                if ('application/json' == $type) {
+                    $format = 'json';
+                    break;
+                }
             }
         }
 
