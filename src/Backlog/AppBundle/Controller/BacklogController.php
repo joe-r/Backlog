@@ -41,6 +41,7 @@ class BacklogController extends Controller
         $response = null;
         switch ($format) {
             case 'json':
+                $filename = sprintf('backlog_%s.json', $uid);
                 $response = $this->forward('BacklogAppBundle:Backlog:show', array(
                     'uid' => $uid,
                 ), array(
@@ -57,7 +58,7 @@ class BacklogController extends Controller
         $this->throwNotFoundUnless($response, sprintf('Format "%s" not supported', $format));
 
         $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Content-Disposition', 'Attachment');
+        $response->headers->set('Content-Disposition', sprintf('Attachment;filename="%s"', $filename));
 
         return $response;
     }
