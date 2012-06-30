@@ -23,4 +23,4 @@ What's inside?
 
 [0]: https://github.com/alexandresalome/Backlog/tree/master/app/features
 [1]: https://github.com/alexandresalome/Backlog/blob/master/behat.yml
-[2]: https://github.com/alexandresalome/Backlog/blob/master/src/Backlog/AppBundle/Resources/config/doctrine/BacklogRow.orm.xml
+[2]: https://github.com/alexandresalome/Backlog/blob/master/src/Backlog/BacklogBundle/Resources/config/doctrine/BacklogRow.orm.xml
