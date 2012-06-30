@@ -19,6 +19,9 @@
         "symfony/monolog-bundle": "dev-master",
         "sensio/distribution-bundle": "dev-master",
 
+        "jms/serializer-bundle": "dev-master"
+    },
+    "require-dev": {
         "behat/symfony2-extension": "dev-master",
         "behat/mink-extension": "dev-master",
         "behat/mink-goutte-driver": "dev-master",
