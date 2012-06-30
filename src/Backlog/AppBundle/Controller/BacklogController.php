@@ -25,7 +25,9 @@ class BacklogController extends Controller
             'backlog' => $backlog
             ));
         } elseif ($format == 'json') {
-            $response = $this->renderText(json_encode($backlog->toJSON()));
+            $serializer = $this->get('serializer');
+            $content = $serializer->serialize($backlog, 'json');
+            $response = $this->renderText($content);
             $response->headers->set('Content-Type', 'application/json');
 
             return $response;

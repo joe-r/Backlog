@@ -131,21 +131,4 @@ class Backlog
     {
         return $this->rows;
     }
-
-    public function toJSON()
-    {
-        $result = array(
-            'uid' => $this->uid,
-            'title' => $this->title,
-            'expiration_hours' => $this->expirationHours,
-            'owner' => $this->getOwner()->toJSON(),
-            'rows' => array()
-        );
-
-        foreach ($this->getRows() as $row) {
-            $result['rows'][] = $row->toJSON();
-        }
-
-        return $result;
-    }
 }

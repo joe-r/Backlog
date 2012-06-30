@@ -71,12 +71,4 @@ class Milestone extends BacklogRow
     {
         return $this->dueAt;
     }
-
-    public function toJSON()
-    {
-        return array_merge(parent::toJSON(), array(
-            'type' => 'milestone',
-            'title' => $this->title
-        ));
-    }
 }

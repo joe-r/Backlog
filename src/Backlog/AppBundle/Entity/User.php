@@ -231,14 +231,4 @@ class User implements UserInterface
     {
         return $value instanceof User && $value->getUsername() == $this->username;
     }
-
-    public function toJSON()
-    {
-        return array(
-            'username' => $this->username,
-            'fullname' => $this->fullname,
-            'initials' => $this->initials,
-            'email'    => $this->email
-        );
-    }
 }

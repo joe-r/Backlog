@@ -157,15 +157,4 @@ class Story extends BacklogRow
 
         $this->tags = array_diff($this->tags, array($tag));
     }
-
-    public function toJSON()
-    {
-        return array_merge(parent::toJSON(), array(
-            'type'  => 'story',
-            'tags'  => $this->tags,
-            'title' => $this->title,
-            'description' => $this->description,
-            'description_html' => $this->descriptionHtml,
-        ));
-    }
 }
