@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1>Edit story #{{ row.id }}</h1>
+    <h2>Edit story #{{ row.id }}</h2>
 </div>
 <form action="{{ path('bl_backlogrow_save', {backlog_uid: row.backlog.uid, id: row.id}) }}" method="POST">
     {{ form_widget(form) }}
