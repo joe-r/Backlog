@@ -1,0 +1,14 @@
+Backlog\AppBundle\Entity\User:
+    xml_root_name: user
+    exclusion_policy: all
+    properties:
+        username:
+            expose: true
+        initials:
+            expose: true
+        fullname:
+            expose: true
+        email:
+            expose: true
+        backlogs:
+            expose: true

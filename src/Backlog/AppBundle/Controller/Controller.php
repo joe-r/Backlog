@@ -37,4 +37,26 @@ abstract class Controller extends BaseController
     {
         return new Response($text);
     }
+
+    protected function serialize($data, $format)
+    {
+        switch ($format) {
+            case 'xml':
+                $type = 'text/xml';
+                break;
+            case 'json':
+                $type = 'application/json';
+                break;
+            default:
+                throw new \InvalidArgumentException('Unknown format: '.$format);
+        }
+
+        $serializer = $this->get('serializer');
+        $content = $serializer->serialize($data, $format);
+
+        $response = $this->renderText($content);
+        $response->headers->set('Content-Type', $type);
+
+        return $response;
+    }
 }

@@ -34,6 +34,9 @@ class FormatListener
                     $format = 'json';
                     break;
                 }
+                if ('text/xml' == $type) {
+                    $format = 'xml';
+                }
             }
         }
 

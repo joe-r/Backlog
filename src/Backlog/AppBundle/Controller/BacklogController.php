@@ -16,24 +16,20 @@ class BacklogController extends Controller
      */
     public function showAction($uid)
     {
-        $this->throwNotFoundUnless($backlog = $this->getRepository('BacklogAppBundle:Backlog')->find($uid));
-
         $format = $this->getRequest()->attributes->get('_format');
+        $this->throwNotFoundUnless($backlog = $this->getRepository('BacklogAppBundle:Backlog')->find($uid));
 
         if ($format == 'html') {
             return $this->render('BacklogAppBundle:Backlog:show.html.twig', array(
-            'backlog' => $backlog
+                'backlog' => $backlog
             ));
-        } elseif ($format == 'json') {
-            $serializer = $this->get('serializer');
-            $content = $serializer->serialize($backlog, 'json');
-            $response = $this->renderText($content);
-            $response->headers->set('Content-Type', 'application/json');
-
-            return $response;
         }
 
-        throw $this->createNotFoundException(sprintf('Unknown format: %s', $format));
+        if (!in_array($format, array('xml', 'json'))) {
+            throw new \InvalidArgumentException(sprintf('Format "%s" is not supported'));
+        }
+
+        return $this->serialize($backlog, $format);
     }
 
     public function downloadAction($uid)
@@ -41,25 +37,17 @@ class BacklogController extends Controller
         $format = $this->getRequest()->query->get('format');
 
         $response = null;
-        switch ($format) {
-            case 'json':
-                $filename = sprintf('backlog_%s.json', $uid);
-                $response = $this->forward('BacklogAppBundle:Backlog:show', array(
-                    'uid' => $uid,
-                ), array(
-                    '_format' => $format,
-                ));
+        $filename = sprintf('backlog_%s.%s', $uid, $format);
 
-                if ($response->getStatusCode() !== 200) {
-                    throw new \RuntimeException('Unable to fetch JSON data');
-                }
+        $response = $this->forward('BacklogAppBundle:Backlog:show',
+            array('uid' => $uid),
+            array('_format' => $format)
+        );
 
-                break;
+        if ($response->getStatusCode() !== 200) {
+            throw new \RuntimeException('Error during download');
         }
 
-        $this->throwNotFoundUnless($response, sprintf('Format "%s" not supported', $format));
-
-        $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Content-Disposition', sprintf('Attachment;filename="%s"', $filename));
 
         return $response;
