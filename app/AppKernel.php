@@ -22,6 +22,7 @@ class AppKernel extends Kernel
 
             new Backlog\AppBundle\BacklogAppBundle(),
             new Backlog\BacklogBundle\BacklogBacklogBundle(),
+            new Backlog\CommentBundle\BacklogCommentBundle(),
             new Backlog\MarkdownBundle\BacklogMarkdownBundle(),
             new Backlog\UserBundle\BacklogUserBundle(),
         );
