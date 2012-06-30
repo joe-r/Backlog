@@ -1,0 +1,23 @@
+.backlog-row-list {
+    border-bottom: 1px solid #ccc;
+}
+
+.backlog-row-list > div {
+    border: 1px solid #ccc;
+    border-bottom: none;
+    padding: 0.4em;
+    display: block;
+}
+
+.backlog-row-list > div.active {
+    background-color: #338833;
+}
+
+.backlog-row-list > div.active a{
+    color: white;
+}
+
+.backlog-row-list > div.milestone {
+    background-color: #d0d0f4;
+    border-width: 2px;
+}

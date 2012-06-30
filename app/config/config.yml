@@ -1,12 +1,7 @@
-parameters:
-    # Assetic
-    assetic.filter.compass.images_dir: %kernel.root_dir%/../web/images
-    assetic.filter.compass.http_path:  /images
-    assetic.filter.compass.plugins: [ "bootstrap" ]
-
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: backlog.yml }
 
 framework:
     translator:      { fallback: %locale% }
@@ -54,6 +49,3 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
-
-backlog_app:
-    markdown_converter: simple

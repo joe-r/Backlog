@@ -1,0 +1,11 @@
+{% extends "BacklogAppBundle::layout-2columns-left.html.twig" %}
+
+{% block left %}
+  {% include "BacklogBacklogBundle:Backlog:_toolbar.html.twig" with {
+    backlog: backlog
+  } only %}
+  {% include "BacklogBacklogBundle:BacklogRow:_list.html.twig" with {
+      rows: backlog.rows,
+      active: row is defined ? row : null
+  } only %}
+{% endblock %}

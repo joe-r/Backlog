@@ -28,11 +28,6 @@ abstract class Controller extends BaseController
         $em->flush();
     }
 
-    /**
-     * Renders a basic text response
-     *
-     * @return Response
-     */
     protected function renderText($text)
     {
         return new Response($text);

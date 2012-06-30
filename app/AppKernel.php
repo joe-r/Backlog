@@ -21,6 +21,9 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle($this),
 
             new Backlog\AppBundle\BacklogAppBundle(),
+            new Backlog\BacklogBundle\BacklogBacklogBundle(),
+            new Backlog\MarkdownBundle\BacklogMarkdownBundle(),
+            new Backlog\UserBundle\BacklogUserBundle(),
         );
 
         $env = $this->getEnvironment();

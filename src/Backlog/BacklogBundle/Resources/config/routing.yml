@@ -1,0 +1,71 @@
+bl_backlog_list:
+    pattern: /
+    defaults: { _controller: "BacklogBacklogBundle:Backlog:list" }
+    requirements: { _method: "GET" }
+
+bl_backlog_show:
+    pattern: /b/{uid}
+    defaults: { _controller: "BacklogBacklogBundle:Backlog:show" }
+    requirements: { _method: "GET" }
+
+bl_backlog_download:
+    pattern: /b/{uid}/download
+    defaults: { _controller: "BacklogBacklogBundle:Backlog:download" }
+    requirements: { _method: "GET" }
+
+bl_backlog_new:
+    pattern: /backlog/new
+    defaults: { _controller: "BacklogBacklogBundle:Backlog:new" }
+    requirements: { _method: "GET" }
+
+bl_backlog_saveNew:
+    pattern: /backlog
+    defaults: { _controller: "BacklogBacklogBundle:Backlog:saveNew" }
+    requirements: { _method: "POST" }
+
+bl_backlog_edit:
+    pattern: /backlogs/{uid}/edit
+    defaults: { _controller: "BacklogBacklogBundle:Backlog:edit" }
+    requirements: { _method: "GET" }
+
+bl_backlog_save:
+    pattern: /backlogs/{uid}
+    defaults: { _controller: "BacklogBacklogBundle:Backlog:save" }
+    requirements: { _method: "POST" }
+
+# Backlog row
+
+bl_backlogrow_move:
+    pattern: /b/{backlog_uid}/{id}/move
+    defaults: { _controller: "BacklogBacklogBundle:BacklogRow:move" }
+    requirements: { _method: POST }
+
+bl_backlogrow_show:
+    pattern: /b/{backlog_uid}/{id}
+    defaults: { _controller: "BacklogBacklogBundle:BacklogRow:show" }
+    requirements: { _method: "GET", id: \d+ }
+
+bl_backlogrow_edit:
+    pattern: /b/{backlog_uid}/{id}/edit
+    defaults: { _controller: "BacklogBacklogBundle:BacklogRow:edit" }
+    requirements: { _method: "GET", id: \d+ }
+
+bl_backlogrow_new:
+    pattern: /b/{backlog_uid}/new
+    defaults: { _controller: "BacklogBacklogBundle:BacklogRow:new" }
+    requirements: { _method: "GET" }
+
+bl_backlogrow_save:
+    pattern: /b/{backlog_uid}/{id}
+    defaults: { _controller: "BacklogBacklogBundle:BacklogRow:save" }
+    requirements: { _method: "POST", id: \d+ }
+
+bl_backlogrow_saveNew:
+    pattern: /b/{backlog_uid}
+    defaults: { _controller: "BacklogBacklogBundle:BacklogRow:saveNew" }
+    requirements: { _method: "POST", id: \d+ }
+
+bl_backlogrow_finish:
+    pattern: /b/{backlog_uid}/{id}/finish
+    defaults: { _controller: "BacklogBacklogBundle:BacklogRow:finish" }
+    requirements: { _method: "POST", id: \d+ }

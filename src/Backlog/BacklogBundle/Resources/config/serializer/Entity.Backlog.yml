@@ -1,0 +1,12 @@
+Backlog\BacklogBundle\Entity\Backlog:
+    xml_root_name: backlog
+    exclusion_policy: all
+    properties:
+        uid:
+            expose: true
+        title:
+            expose: true
+        expirationHours:
+            expose: true
+        owner:
+            expose: true

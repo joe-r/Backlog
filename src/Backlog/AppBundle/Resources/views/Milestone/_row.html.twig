@@ -1,9 +1,0 @@
-{% extends "BacklogAppBundle:BacklogRow:_row.html.twig" %}
-
-{% block class 'milestone' %}
-{% block icon  'icon-flag icon-white' %}
-
-{% block content %}
-    <span class="title">{{ row.title }}</span>
-    <span class="due-at">{{ row.dueAt | date('Y-m-d') }}</span>
-{% endblock %}
