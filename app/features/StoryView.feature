@@ -1,6 +1,4 @@
-Feature: Viewing of the backlog
-    I can see informations related to my backlog
-    As a user
+Feature: View a story
 
     Background:
         Given I'm connected as user "user"
