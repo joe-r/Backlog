@@ -5,7 +5,8 @@
         'parts': [
             {link: path('bl_backlog_list'), label: 'Backlogs', panel: false},
             {link: path('bl_backlog_show', {uid: row.backlog.uid}), label: row.backlog.title},
-            {link: false, label: 'Row #' ~ row.id}
+            {link: path('bl_backlogrow_show', {backlog_uid: row.backlog.uid, id: row.id}), label: 'Row #' ~ row.id},
+            {link: null, label: 'Comments'}
         ]
     } %}
 {% endblock %}
@@ -13,7 +14,7 @@
 {% block right %}
     {% include "BacklogBacklogBundle:BacklogRow:_tabs.html.twig" with {
         row:    row,
-        active: 'description'
+        active: 'comments'
     } only %}
-    {{ bl_row_show(row) }}
+    {% render "BacklogCommentBundle:Feed:showBlock" with {uuid: row.commentFeed.uuid}, {standalone: true} %}
 {% endblock %}

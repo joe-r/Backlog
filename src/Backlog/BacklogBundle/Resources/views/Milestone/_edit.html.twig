@@ -1,6 +1,3 @@
-<div class="page-header">
-    <h2>Edit milestone #{{ row.id }}</h2>
-</div>
 <form action="{{ path('bl_backlogrow_save', {backlog_uid: row.backlog.uid, id: row.id}) }}" method="POST">
     {{ form_widget(form) }}
     <p><input type="submit" class="btn" value="Save" /></p>

@@ -12,5 +12,9 @@
 {% endblock %}
 
 {% block right %}
+    {% include "BacklogBacklogBundle:BacklogRow:_tabs.html.twig" with {
+        row: row,
+        active: 'edit'
+    } %}
     {{ bl_row_edit(row, form) }}
 {% endblock %}

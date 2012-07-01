@@ -43,6 +43,16 @@ class BacklogRowController extends Controller
         ));
     }
 
+    public function showCommentsAction($backlog_uid, $id)
+    {
+        $row = $this->getRow($backlog_uid, $id);
+
+        return $this->render('BacklogBacklogBundle:BacklogRow:showComments.html.twig', array(
+            'row'     => $row,
+            'backlog' => $row->getBacklog()
+        ));
+    }
+
     public function newAction($backlog_uid)
     {
         $backlog = $this->getRepository('BacklogBacklogBundle:Backlog')->find($backlog_uid);

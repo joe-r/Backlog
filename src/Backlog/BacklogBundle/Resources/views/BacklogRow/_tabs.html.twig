@@ -1,0 +1,18 @@
+<ul class="nav nav-tabs">
+    <li {% if active is defined and active == 'description' %}class="active"{% endif %}>
+        <a href="{{ path('bl_backlogrow_show', {backlog_uid: row.backlog.uid, id: row.id}) }}">
+            Description
+        </a>
+    </li>
+    <li {% if active is defined and active == 'comments' %}class="active"{% endif %}>
+        <a href="{{ path('bl_backlogrow_showComments', {backlog_uid: row.backlog.uid, id: row.id}) }}">
+            Comments
+        </a>
+    </li>
+    <li {% if active is defined and active == 'edit' %}class="active"{% endif %}>
+        <a href="{{ path('bl_backlogrow_edit', {backlog_uid: row.backlog.uid, id: row.id}) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+</ul>
