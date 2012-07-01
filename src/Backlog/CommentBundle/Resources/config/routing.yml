@@ -1,0 +1,4 @@
+bl_comment_message_saveNew:
+    pattern: /comments/{feed_uuid}/message
+    defaults: { _controller: "BacklogCommentBundle:Message:saveNew" }
+    requirements: { _method: "POST" }

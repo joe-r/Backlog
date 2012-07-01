@@ -1,0 +1,6 @@
+<p>
+    {% if entry.hasAuthor %}
+        <strong>{{ entry.author.fullname }}</strong> {{ entry.author.initials }} :
+    {% endif %}
+    {{ entry.messageHtml | raw }}
+</p>

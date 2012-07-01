@@ -1,4 +1,6 @@
 _backlog:
     resource: "@BacklogBacklogBundle/Resources/config/routing.yml"
+_comment:
+    resource: "@BacklogCommentBundle/Resources/config/routing.yml"
 _user:
     resource: "@BacklogUserBundle/Resources/config/routing.yml"

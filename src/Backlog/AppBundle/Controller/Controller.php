@@ -23,8 +23,11 @@ abstract class Controller extends BaseController
 
     protected function persistAndFlush($entity)
     {
+        $entity = is_array($entity) ? $entity : array($entity);
         $em = $this->getDoctrine()->getEntityManager();
-        $em->persist($entity);
+        foreach ($entity as $e) {
+            $em->persist($e);
+        }
         $em->flush();
     }
 

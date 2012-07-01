@@ -10,10 +10,13 @@ class FeedController extends Controller
     {
         $this->throwNotFoundUnless($feed = $this->getRepository('BacklogCommentBundle:Feed')->find($uuid));
 
+        $form = $this->createForm('bl_comment_message');
+
         return $this->render(
             'BacklogCommentBundle:Feed:showBlock.html.twig',
             array(
-                'feed' => $feed
+                'feed' => $feed,
+                'messageForm' => $form->createView()
             )
         );
     }

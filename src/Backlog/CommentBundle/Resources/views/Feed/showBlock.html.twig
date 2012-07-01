@@ -1,5 +1,13 @@
 {% for entry in feed.entries %}
-    ENTRY
+    {% if entry is comment_message %}
+        {% include "BacklogCommentBundle:Message:_show.html.twig" with {entry: entry} %}
+    {% else %}
+        <p><em>???</em></p>
+    {% endif %}
 {% else %}
     <p><em>No entry</em></em>
 {% endfor %}
+<form method="POST" action="{{ path('bl_comment_message_saveNew', {feed_uuid: feed.uuid}) }}" {{ form_enctype(messageForm) }}>
+    {{ form_widget(messageForm) }}
+    <p><button class="btn" type="submit">Post message</button></p>
+</form>

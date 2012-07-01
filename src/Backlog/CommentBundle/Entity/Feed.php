@@ -32,4 +32,10 @@ class Feed
     {
         return $this->entries;
     }
+
+    public function addEntry(Entry $entry)
+    {
+        $entry->setFeed($this);
+        $this->entries[] = $entry;
+    }
 }
