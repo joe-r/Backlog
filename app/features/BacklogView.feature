@@ -8,4 +8,5 @@ Feature: Viewing of the backlog
     Scenario: The backlog page shows me revelant informations about my backlog
       Given I am on "/"
        When I follow "User basic backlog"
+        And I wait for Selenium
        Then I should see "User basic backlog"

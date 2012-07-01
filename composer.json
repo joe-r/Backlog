@@ -22,6 +22,7 @@
         "jms/serializer-bundle": "dev-master"
     },
     "require-dev": {
+        "behat/behat": ">=2.4@stable",
         "behat/symfony2-extension": "dev-master",
         "behat/mink-extension": "dev-master",
         "behat/mink-goutte-driver": "dev-master",

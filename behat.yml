@@ -1,12 +1,13 @@
 default:
     context:
-        class: 'Backlog\AppBundle\Feature\FeatureContext'
+        class: Backlog\AppBundle\Feature\AppContext
     extensions:
         Behat\JournalExtension\Extension:
+            capture_all: false
         Behat\Symfony2Extension\Extension:
         Behat\MinkExtension\Extension:
             base_url:           http://todo.dev
-            default_session: selenium
+            default_session:    selenium
             goutte:             true
             selenium:           true
             browser_name:       firefox

@@ -16,6 +16,7 @@ Feature: Registering to the website
         | Password        | userpass             |
         | Repeat password | userpass             |
         And I press "Register"
+        And I wait for Selenium
        Then I should see "Registration done!"
 
     Scenario: I can't register with an existing username
@@ -28,12 +29,14 @@ Feature: Registering to the website
         | Password        | userpass             |
         | Repeat password | userpass             |
         And I press "Register"
+        And I wait for Selenium
        Then I should see "This username is already used"
        When I fill in the following:
         | Username        | usertest |
         | Password        | test     |
         | Repeat password | test     |
         And I press "Register"
+        And I wait for Selenium
        Then I should see "Registration done!"
 
     Scenario: I can't register with an existing email
@@ -46,10 +49,12 @@ Feature: Registering to the website
         | Password        | userpass         |
         | Repeat password | userpass         |
         And I press "Register"
+        And I wait for Selenium
        Then I should see "This email is already used"
        When I fill in the following:
         | Email           | usertest@example.org |
         | Password        | test                 |
         | Repeat password | test                 |
         And I press "Register"
+        And I wait for Selenium
        Then I should see "Registration done!"

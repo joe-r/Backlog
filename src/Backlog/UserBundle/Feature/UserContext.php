@@ -1,24 +1,19 @@
 <?php
 
-namespace Backlog\AppBundle\Feature;
+namespace Backlog\UserBundle\Feature;
 
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Behat\MinkExtension\Context\MinkContext;
+use Behat\Behat\Context\BehatContext;
 
-class FeatureContext extends MinkContext implements KernelAwareInterface
+class UserContext extends BehatContext
 {
-    public function setKernel(KernelInterface $kernel)
-    {
-        $this->kernel = $kernel;
-    }
-
     /**
      * @Given /^There is no user "([^"]*)" in database$/
      */
     public function thereIsNoUserInDatabase($username)
     {
-        $em = $this->kernel->getContainer()->get('doctrine')->getEntityManager();
+        $em = $this->getMainContext()->getSubcontext('kernel')->getDoctrine()->getEntityManager();
 
         $em
             ->createQuery('DELETE FROM Backlog\UserBundle\Entity\User u WHERE u.username = :username')
@@ -32,11 +27,13 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      */
     public function iMConnectedAsUser($username, $password = null)
     {
-        $this->visit("/login");
+        $ctx = $this->getMainContext()->getSubcontext('mink');
 
-        $this->fillField('_username', $username);
-        $this->fillField('_password', isset($password) ? $password : $username);
-        $this->pressButton('Login');
-        $this->assertPageContainsText('Connected as '.$username);
+        $ctx->visit("/login");
+        $ctx->fillField('_username', $username);
+        $ctx->fillField('_password', isset($password) ? $password : $username);
+        $ctx->pressButton('Login');
+        $ctx->getMainContext()->waitForSelenium();
+        $ctx->assertPageContainsText('Connected as '.$username);
     }
 }
