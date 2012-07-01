@@ -3,6 +3,7 @@
 namespace Backlog\BacklogBundle\Entity;
 
 use Backlog\AppBundle\Util\UUIDGenerator;
+use Backlog\CommentBundle\Entity\Feed;
 
 /**
  * Representation of a backlog row.
@@ -61,6 +62,11 @@ abstract class BacklogRow
     protected $backlog;
 
     /**
+     * @var Feed
+     */
+    protected $commentFeed;
+
+    /**
      * Constructs a new backlog row.
      */
     public function __construct()
@@ -68,6 +74,7 @@ abstract class BacklogRow
         $this->uid = UUIDGenerator::v4();
         $this->createdAt = new \DateTime();
         $this->isDone = false;
+        $this->commentFeed = new Feed();
     }
 
     public function isFinishable()
@@ -183,5 +190,10 @@ abstract class BacklogRow
     public function setDone($isDone = true)
     {
         $this->isDone = $isDone;
+    }
+
+    public function getCommentFeed()
+    {
+        return $this->commentFeed;
     }
 }

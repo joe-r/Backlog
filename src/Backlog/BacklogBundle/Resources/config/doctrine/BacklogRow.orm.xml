@@ -22,6 +22,14 @@
         <field name="position" type="integer" />
         <field name="id" type="integer" />
 
+        <one-to-one field="commentFeed" target-entity="Backlog\CommentBundle\Entity\Feed">
+            <cascade>
+                <cascade-remove/>
+                <cascade-persist/>
+            </cascade>
+            <join-column name="comment_feed_uuid" referenced-column-name="uuid" />
+        </one-to-one>
+
         <many-to-one field="backlog" target-entity="Backlog" inversed-by="rows">
 -            <join-column name="backlog_uid" referenced-column-name="uid" nullable="false" />
         </many-to-one>

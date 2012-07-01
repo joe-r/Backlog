@@ -3,6 +3,7 @@
 namespace Backlog\CommentBundle\Entity;
 
 use Backlog\AppBundle\Util\UUIDGenerator;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class Feed
 {
@@ -14,6 +15,7 @@ class Feed
     {
         $this->uuid = UUIDGenerator::v4();
         $this->createdAt = new \DateTime();
+        $this->entries = new ArrayCollection();
     }
 
     public function getUuid()
