@@ -30,7 +30,7 @@ class BacklogController extends Controller
             throw new \InvalidArgumentException(sprintf('Format "%s" is not supported'));
         }
 
-        return $this->serialize($backlog, $format);
+        return $this->serialize($backlog, $format, array('backlog_export'));
     }
 
     public function downloadAction($uid)

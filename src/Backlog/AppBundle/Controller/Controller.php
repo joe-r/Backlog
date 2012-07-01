@@ -36,7 +36,7 @@ abstract class Controller extends BaseController
         return new Response($text);
     }
 
-    protected function serialize($data, $format)
+    protected function serialize($data, $format, $groups = array())
     {
         switch ($format) {
             case 'xml':
@@ -50,6 +50,7 @@ abstract class Controller extends BaseController
         }
 
         $serializer = $this->get('serializer');
+        $serializer->setGroups($groups);
         $content = $serializer->serialize($data, $format);
 
         $response = $this->renderText($content);

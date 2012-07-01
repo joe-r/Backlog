@@ -1,0 +1,13 @@
+Backlog\BacklogBundle\Entity\BacklogRow:
+    xml_root_name: backlog-row
+    exclusion_policy: all
+    properties:
+        uid:
+            groups: [backlog_export]
+            expose: true
+        isDone:
+            groups: [backlog_export]
+            expose: true
+        complexity:
+            groups: [backlog_export]
+            expose: true

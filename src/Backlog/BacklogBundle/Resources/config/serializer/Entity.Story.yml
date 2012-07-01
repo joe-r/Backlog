@@ -1,0 +1,13 @@
+Backlog\BacklogBundle\Entity\Story:
+    xml_root_name: story
+    exclusion_policy: all
+    properties:
+        title:
+            groups: [backlog_export]
+            expose: true
+        description:
+            groups: [backlog_export]
+            expose: true
+        descriptionHtml:
+            groups: [backlog_export]
+            expose: true

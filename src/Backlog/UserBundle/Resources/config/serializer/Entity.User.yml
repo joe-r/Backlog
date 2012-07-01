@@ -3,12 +3,17 @@ Backlog\UserBundle\Entity\User:
     exclusion_policy: all
     properties:
         username:
+            groups: [backlog_export, user_export]
             expose: true
         initials:
+            groups: [user_export]
             expose: true
         fullname:
+            groups: [user_export]
             expose: true
         email:
+            groups: [user_export]
             expose: true
         backlogs:
+            groups: [user_export]
             expose: true

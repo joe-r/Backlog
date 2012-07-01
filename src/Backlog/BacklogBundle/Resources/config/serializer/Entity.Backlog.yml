@@ -3,10 +3,17 @@ Backlog\BacklogBundle\Entity\Backlog:
     exclusion_policy: all
     properties:
         uid:
+            groups: [backlog_export, user_export]
             expose: true
         title:
+            groups: [backlog_export]
             expose: true
         expirationHours:
+            groups: [backlog_export]
             expose: true
         owner:
+            groups: [backlog_export]
+            expose: true
+        rows:
+            groups: [backlog_export]
             expose: true

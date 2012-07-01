@@ -1,0 +1,10 @@
+Backlog\BacklogBundle\Entity\Milestone:
+    xml_root_name: milestone
+    exclusion_policy: all
+    properties:
+        title:
+            groups: [backlog_export]
+            expose: true
+        dueAt:
+            groups: [backlog_export]
+            expose: true

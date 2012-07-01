@@ -19,3 +19,11 @@
 
     </form>
 {% endblock %}
+
+{% block content_javascript %}
+    <script>
+        $(document).ready(function () {
+            $("#_username").focus();
+        });
+    </script>
+{% endblock %}

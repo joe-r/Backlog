@@ -20,6 +20,7 @@
         <field name="createdAt" type="datetime" />
         <field name="complexity" type="integer" />
         <field name="position" type="integer" />
+        <field name="isDone" type="boolean" />
         <field name="id" type="integer" />
 
         <one-to-one field="commentFeed" target-entity="Backlog\CommentBundle\Entity\Feed">
