@@ -1,7 +1,4 @@
 Feature: Registering to the website
-    I can create an account
-    As a visitor
-    To start using services
 
     Background:
         Given There is no user "usertest" in database

@@ -1,10 +1,10 @@
 <dl>
     <dt>Title</dt>
-    <dd>{{ row.title }}</dd>
+    <dd class="title">{{ row.title }}</dd>
     <dt>Complexity</dt>
-    <dd>{{ row.complexity }}</dd>
+    <dd class="complexity">{{ row.complexity }}</dd>
     <dt>Assignee</dt>
-    <dd>
+    <dd class="assignee">
         {% if row.assigned %}
             {{ row.assignee.fullname }}
             {% if row.isAssignee(app.user) %}
@@ -15,5 +15,5 @@
         {% endif %}
     </dd>
     <dt>Description</dt>
-    <dd>{{ row.descriptionHtml | raw }}</dd>
+    <dd class="description">{{ row.descriptionHtml | raw }}</dd>
 </dl>

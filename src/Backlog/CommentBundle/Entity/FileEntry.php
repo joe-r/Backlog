@@ -3,7 +3,7 @@
 namespace Backlog\CommentBundle\Entity;
 
 use Backlog\AppBundle\Util\UUIDGenerator;
-use Backlog\MarkdownBundle\Markdown\EncoderInterface;
+use Backlog\MarkdownBundle\Markdown\ConverterInterface;
 
 class FileEntry extends Entry
 {
@@ -29,10 +29,10 @@ class FileEntry extends Entry
         return $this->mimeType;
     }
 
-    public function setDescription($description, EncoderInterface $encoder)
+    public function setDescription($description, ConverterInterface $converter)
     {
         $this->description = $description;
-        $this->descriptionHtml = $encoder->encodeToHtml($description);
+        $this->descriptionHtml = $converter->convertToHtml($description);
     }
 
     public function getDescription()

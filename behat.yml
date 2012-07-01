@@ -3,7 +3,7 @@ default:
         class: Backlog\AppBundle\Feature\AppContext
     extensions:
         Behat\JournalExtension\Extension:
-            capture_all: false
+            capture_all: true
         Behat\Symfony2Extension\Extension:
         Behat\MinkExtension\Extension:
             base_url:           http://todo.dev
